@@ -26,7 +26,7 @@ Include instructions on how to install your application. This might include:
     3) Git clone 
         git clone https://github.com/jinjinesh/eShop.git
     3) Update the configuration (appsettings.json file) with rabbit mq credentials in all project
-        a) .\src\OrderService\appsettings.json
-        b) .\src\NotificationService2\appsettings.json
-        c) .\src\NotificationService1\appsettings.json
+        - .\src\OrderService\appsettings.json
+        - .\src\NotificationService2\appsettings.json
+        - .\src\NotificationService1\appsettings.json
     4) Goto root folder and run powershell to build and run projects Build-And-Run-Script.ps1 via powershell
