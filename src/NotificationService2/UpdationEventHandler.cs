@@ -7,11 +7,11 @@ public class UpdationEventHandler : BackgroundService
     private readonly ILogger<CreationEventHandler> _logger;
     private readonly RabbitMQMessagePublisher _messagePublisher;
 
-    public UpdationEventHandler(ILogger<CreationEventHandler> logger)
+    public UpdationEventHandler(ILogger<CreationEventHandler> logger, RabbitMqOption rabbitMqOption)
     {
         _logger = logger;
         _messagePublisher =
-            new RabbitMQMessagePublisher("localhost", "guest", "guest", "orderUpdation", "topic", "updation");
+            new RabbitMQMessagePublisher(rabbitMqOption, "orderUpdation", "topic", "updation");
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

@@ -7,11 +7,11 @@ namespace NotificationService1
         private readonly ILogger<CreationEventHandler> _logger;
         private readonly RabbitMQMessagePublisher _messagePublisher;
 
-        public CreationEventHandler(ILogger<CreationEventHandler> logger)
+        public CreationEventHandler(ILogger<CreationEventHandler> logger, RabbitMqOption rabbitMqOption)
         {
             _logger = logger;
             _messagePublisher =
-                new RabbitMQMessagePublisher("localhost", "guest", "guest", "orderCreation", "fanout", "creation");
+                new RabbitMQMessagePublisher(rabbitMqOption, "orderCreation", "fanout", "creation");
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

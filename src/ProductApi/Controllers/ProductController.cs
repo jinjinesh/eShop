@@ -13,12 +13,12 @@ namespace ProductApi.Controllers;
 [ApiController]
 public class ProductController : ControllerBase
 {
-    private readonly string _orderServiceUrl = "http://localhost:5042";
     private readonly Order.OrderClient _orderClient;
 
-    public ProductController()
+    public ProductController(IConfiguration configuration)
     {
-        var channel = GrpcChannel.ForAddress(_orderServiceUrl);
+        var orderServiceUrl = configuration["orderServiceUrl"];
+        var channel = GrpcChannel.ForAddress(orderServiceUrl);
         _orderClient = new Order.OrderClient(channel);
     }
 

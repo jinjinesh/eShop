@@ -9,13 +9,13 @@ public class OrderService : Order.OrderBase
     private readonly RabbitMQMessagePublisher _messagePublisherForCreation;
     private readonly RabbitMQMessagePublisher _messagePublisherForUpdation;
 
-    public OrderService(ILogger<OrderService> logger)
+    public OrderService(ILogger<OrderService> logger, RabbitMqOption rabbitMqOption)
     {
         _logger = logger;
         _messagePublisherForCreation =
-            new RabbitMQMessagePublisher("localhost", "guest", "guest", "orderCreation", "fanout", "creation");
+            new RabbitMQMessagePublisher(rabbitMqOption, "orderCreation", "fanout", "creation");
         _messagePublisherForUpdation =
-            new RabbitMQMessagePublisher("localhost", "guest", "guest", "orderUpdation", "topic", "updation");
+            new RabbitMQMessagePublisher(rabbitMqOption, "orderUpdation", "topic", "updation");
     }
 
     public override Task<OrderResultResponse> CreateOrder(CreateOrderRequest request, ServerCallContext context)

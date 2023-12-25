@@ -14,9 +14,9 @@ public class RabbitMQMessagePublisher : IDisposable
     private readonly string _exchange;
     private readonly string _exchangeType;
 
-    public RabbitMQMessagePublisher(string hostName, string username, string password, string exchange, string exchangeType, string queueName)
+    public RabbitMQMessagePublisher(RabbitMqOption rabbitMqOption, string exchange, string exchangeType, string queueName)
     {
-        _factory = new ConnectionFactory() { HostName = hostName, UserName = username, Password = password};
+        _factory = new ConnectionFactory() { HostName = rabbitMqOption.HostName, UserName = rabbitMqOption.UserName, Password = rabbitMqOption.Password};
         _connection = _factory.CreateConnection();
         _channel = _connection.CreateModel();
 
