@@ -29,4 +29,11 @@ Include instructions on how to install your application. This might include:
         - .\src\OrderService\appsettings.json
         - .\src\NotificationService2\appsettings.json
         - .\src\NotificationService1\appsettings.json
+```json
+    "RabbitMQ": {
+        "HostName": "localhost",
+        "UserName": "guest",
+        "Password": "guest"
+    }
+```
     4) Goto root folder and run powershell to build and run projects Build-And-Run-Script.ps1 via powershell
